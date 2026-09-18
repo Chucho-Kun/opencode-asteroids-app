@@ -9,18 +9,81 @@
     body {
       background: #000;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
+      gap: 12px;
     }
     canvas {
       display: block;
       border: 1px solid #222;
     }
+    #skins-overlay {
+      width: 800px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: monospace;
+      font-size: 12px;
+      color: #888;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    #skins-overlay .skins-label {
+      color: #555;
+      margin-right: 2px;
+    }
+    #skins-overlay #skin-current-label {
+      font-weight: bold;
+      min-width: 38px;
+    }
+    #skins-overlay button[data-skin] {
+      font-family: monospace;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      background: #000;
+      border: 1px solid #333;
+      color: #fff;
+      padding: 6px 14px;
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    }
+    #skins-overlay button[data-skin]:hover {
+      border-color: #666;
+      background: #111;
+    }
+    #skins-overlay button[data-skin].active {
+      background: #111;
+      border-width: 1.5px;
+    }
+    #skins-overlay .skins-hint {
+      margin-left: auto;
+      color: #444;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+    }
+    #skins-overlay .skins-hint kbd {
+      display: inline-block;
+      border: 1px solid #333;
+      background: #0a0a0a;
+      padding: 1px 5px;
+      font-family: monospace;
+      font-size: 11px;
+      color: #666;
+      margin-right: 4px;
+    }
   </style>
 </head>
 <body>
   <canvas id="canvas" width="800" height="600"></canvas>
+  <div id="skins-overlay">
+    <span class="skins-label">NAVE:</span>
+    <span id="skin-current-label">AZUL</span>
+    <button data-skin="azul" onclick="setSkin('azul')">AZUL</button>
+    <button data-skin="rojo" onclick="setSkin('rojo')">ROJO</button>
+    <span class="skins-hint"><kbd>C</kbd> para alternar</span>
+  </div>
   <script src="game.js"></script>
 </body>
 </html>
